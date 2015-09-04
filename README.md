@@ -25,6 +25,7 @@ The default widgets in FIDASH are:
 * List Volumes: <https://github.com/fidash/widget-listvolumes.git>
 * Resources Usage: <https://github.com/fidash/widget-resourcesusage.git>
 
+Note: these widgets have been tested in Chrome, other browsers could experience some problems.
 
 # Deployment
 
