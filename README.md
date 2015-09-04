@@ -16,9 +16,9 @@ In addition, FIDASH comes with predefined dashboard set-ups (mashups with instan
 
 The default widgets in FIDASH are:
 
-* Image Details: <https://github.com/fidash/widget-imagedetails.git>
-* Instance Details: <https://github.com/fidash/widget-instancedetails.git>
-* Volume Details: <https://github.com/fidash/widget-volumedetails.git>
+* Detail Image: <https://github.com/fidash/widget-detailimage.git>
+* Detail Instance: <https://github.com/fidash/widget-detailinstance.git>
+* Detail Volume: <https://github.com/fidash/widget-detailvolume.git>
 * List Flavors: <https://github.com/fidash/widget-listflavors.git>
 * List Images: <https://github.com/fidash/widget-listimages.git>
 * List Instances: <https://github.com/fidash/widget-listinstances.git>
