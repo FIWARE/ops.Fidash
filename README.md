@@ -28,9 +28,9 @@ FIDASH, as FI-OPS dashboard, is the graphical front-end that offers FIWARE Lab a
 
 The default widgets in FIDASH are:
 
-* Image Details: <https://github.com/fidash/widget-imagedetails.git>
-* Instance Details: <https://github.com/fidash/widget-instancedetails.git>
-* Volume Details: <https://github.com/fidash/widget-volumedetails.git>
+* Detail Image: <https://github.com/fidash/widget-detailimage.git>
+* Detail Instance: <https://github.com/fidash/widget-detailinstance.git>
+* Detail Volume: <https://github.com/fidash/widget-detailvolume.git>
 * List Flavors: <https://github.com/fidash/widget-listflavors.git>
 * List Images: <https://github.com/fidash/widget-listimages.git>
 * List Instances: <https://github.com/fidash/widget-listinstances.git>
@@ -58,6 +58,7 @@ In modern browsers, linking to an HTTP resource from an HTTPS page is forbidden 
 FIDASH widgets are developed and tested on Chrome and Chromium browsers. Firefox does not render correctly the Resources Usage widget. However WireCloud platform, on which FIDASH is based, is tested on Firefox and chrome browsers though other browsers supporting HTML5 standards will probably be 100% compatible, but it is not guaranteed.
 
 ## Licence
+=======
 
 Apache License, Version 2.0, January 2004
 
