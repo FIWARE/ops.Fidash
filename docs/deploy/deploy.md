@@ -36,14 +36,21 @@ There are different types of FIWARE accounts:
 
 * Basic: This is the default account that is created, though it does not have access to the cloud unless promoted to trial
 * Trial: Basic account with access to Cloud. It expires in 14 days. Currently, at FIWARE events, special instructions
-* Community, required for account not expiring. It is requested in an [http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE_Lab:_Upgrade_to_Community_Account](application), indicating you require, for FIDASH usage, access to all the regions you need.
+* Community, required for account not expiring. It is requested in an [application](http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE_Lab:_Upgrade_to_Community_Account), indicating you require, for FIDASH usage, access to all the regions you need.
 
 ### Obtaining SLAManager access
 
-### Obtaining monitoring access 
+You need to send an e-mail to the [administrator](<sergio.garciavillalonga@atos.net>) of the SLAManager with these informations:
 
+* username (e.g. _myuser_)
+* e-mail (e.g. _e-mail@example.com_)
+* ProjectID: it can be found looking at the HTTP requests done by the system; it should be something like 00000000000000000000000000001234 or 000000000000000000000000_username_
 
+### Obtaining monitoring access
 
+Accessing monitoring through XI-FI API requires:
 
+* **Consumer Key**: is the ID of the application to enable
+* **Consumer Secret**: a secret token.
 
-
+These can be created using the [portal](https://account.lab.fiware.org) or asking to the administrator. This [test script](https://github.com/SmartInfrastructures/xifi-script/blob/master/testAPI.js) can be used to check if they have been enabled.
