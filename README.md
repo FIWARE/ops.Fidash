@@ -60,7 +60,7 @@ The instructions for FIDASH users, including the creating dashboards, customize 
 
 ## Know issues
 
-Widgets can work without major problems with HTTP connection, but please be aware that this can create a security problem. For HTTPS connection could be needed that the server sends some HTTP Headers to enable the 
+Widgets can work without major problems with HTTP connection, but please be aware that this can create a security problem. For HTTPS connection could be needed that the server sends some HTTP Headers to enable the
 visualization of the data or to relax some policies (e.g. [Same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy) ).
 
 OpenStack-based widgets does not support long-lasting sessions. Sometimes these widgets start not displaying information, and showing a permanent _waiting_ icon. In this case a session log out/log in must be performed and those widgets get again right credentials.
@@ -69,8 +69,7 @@ In modern browsers, linking to an HTTP resource from an HTTPS page is forbidden 
 
 FIDASH widgets are developed and tested on Chrome and Chromium browsers. Firefox does not render correctly the Resources Usage widget. However WireCloud platform, on which FIDASH is based, is tested on Firefox and chrome browsers though other browsers supporting HTML5 standards will probably be 100% compatible, but it is not guaranteed.
 
-## Licence
-=======
+## License
 
 Apache License, Version 2.0, January 2004
 
