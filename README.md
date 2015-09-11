@@ -77,6 +77,6 @@ Apache License, Version 2.0, January 2004
 ## References
 
 1. FIWARE: [https://www.fiware.org/](https://www.fiware.org/)
-2. WireCloud[http://conwet.fi.upm.es/wirecloud/](http://conwet.fi.upm.es/wirecloud/)
-3. Mashup definition at Wikipedia [https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29)
-4. jStack library: [https://github.com/ging/jstack](https://github.com/ging/jstack)
+2. WireCloud: [http://conwet.fi.upm.es/wirecloud/](http://conwet.fi.upm.es/wirecloud/)
+3. Mashup definition at Wikipedia:  [https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29)
+4. JStack library: [https://github.com/ging/jstack](https://github.com/ging/jstack)
