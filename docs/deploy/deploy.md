@@ -14,7 +14,7 @@ FIDASH environment at the time of writing is executed inside public WireCloud in
 
 ### Uploading widgets
 
-Widgets must be packaged as zip-compressed files using `.wgt` extension to be uploaded in FIDASH, however their package they can be downloaded from repositories or created from the source code. To upload widgets, go to the **My Resources** section inside [WireCloud public instance](https://mashup.lab.fiware.org), click on **Upload** button and then drag all the desired widgets.
+Widgets must be packaged as zip-compressed files using `.wgt` extension to be uploaded in FIDASH, however their package can be downloaded from repositories or created from the source code. To upload widgets, go to the **My Resources** section inside [WireCloud public instance](https://mashup.lab.fiware.org), click on **Upload** button and then drag all the desired widgets.
 
 ![Access to My Resources](images/my-resources.png) ![upload button](images/upload.png)
 
