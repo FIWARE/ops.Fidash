@@ -36,7 +36,7 @@ There are different types of FIWARE accounts:
 
 * Basic: This is the default account that is created, though it does not have access to the cloud unless promoted to trial
 * Trial: Basic account with access to Cloud. It expires in 14 days. Currently, at FIWARE events, special instructions
-* Community, required for account not expiring. It is requested in an [application](http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE_Lab:_Upgrade_to_Community_Account), indicating you require, for FIDASH usage, access to all the regions you need.
+* Community: expires every 9 months. It is needed in order to have a multi-region access. It can be requested with an [account upgrade](http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE_Lab:_Upgrade_to_Community_Account) specifying all the regions you need to access with FIDASH.
 
 ### Obtaining SLAManager access
 
