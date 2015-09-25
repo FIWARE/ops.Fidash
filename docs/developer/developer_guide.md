@@ -29,7 +29,7 @@ A *widget* is composed by one or more HTML files, JavaScript and CSS files refer
     <preferences>
         <preference name="id" type="boolean" description="Activate to display the id column" label="ID" default="false" />
     </preferences>
-        ```
+   ```
     * Wiring:
 
     ```xml
