@@ -2,13 +2,13 @@
 
 FIDASH is an administration and management dashboard for FIWARE Lab. FIDASH is the dashboard component of the FIWARE FI-OPS tools, a tool suite created to set-up and operate FIWARE Lab nodes and manage the set of federated [OpenStack](https://www.openstack.org/)-based nodes that make up the FIWARE Lab infrastructure.
 
-This project is part of [FIWARE](https://www.fiware.org/)[1].
+This project is part of [FIWARE](https://www.fiware.org/) [1].
 
 ## Description
 
-FIDASH is a tailored version of [WireCloud](http://conwet.fi.upm.es/wirecloud/)[2] and has such is a highly-customizable [mashup](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29)[3] environment that allows the user to easily define functionality and behaviour of the dashboard. The dashboard is made up of multiple widgets that the user can choose, discard, set layout and modify their behaviour.
+FIDASH is a tailored version of [WireCloud](http://conwet.fi.upm.es/wirecloud/) [2] and has such is a highly-customizable [mashup](https://en.wikipedia.org/wiki/Mashup_%28web_application_hybrid%29) [3] environment that allows the user to easily define functionality and behaviour of the dashboard. The dashboard is made up of multiple widgets that the user can choose, discard, set layout and modify their behaviour.
 
-These widgets offer specific functionality such as display a list of instances or synchronize the flavors of some FIWARE Lab. Widgets rely on REST-based APIs offered by the different OpenStack services, the SLA Manager, XIFI Monitoring or other services created in FITOOLKIT project to give support for certain actions. Some services are directly accessed, though others use some libraries to hide the complexity of the APIs, such as the [jstack]( https://github.com/ging/jstack)[4] library for accessing OpenStack services in FIWARE Lab deployments. Authentication is managed by the underlying WireCloud platform against the Identity Management (IdM) and the keystone Proxy present on all FIWARE Lab nodes, and authorization relies on the user rights present at the IdM.
+These widgets offer specific functionality such as display a list of instances or synchronize the flavors of some FIWARE Lab. Widgets rely on REST-based APIs offered by the different OpenStack services, the SLA Manager, XIFI Monitoring or other services created in FITOOLKIT project to give support for certain actions. Some services are directly accessed, though others use some libraries to hide the complexity of the APIs, such as the [jstack]( https://github.com/ging/jstack) [4] library for accessing OpenStack services in FIWARE Lab deployments. Authentication is managed by the underlying WireCloud platform against the Identity Management (IdM) and the keystone Proxy present on all FIWARE Lab nodes, and authorization relies on the user rights present at the IdM.
 
 These widget are connected together to perform higher level functions and to provide correct feedback based on actions done by other components; such integration is done through a mechanism called _wiring_, that send asynchronous messages with data among themselves (events). User of FIDASH is in control of that wiring, and can connect/disconnect widgets at will, modifying the behaviour of the dashboard.
 
@@ -50,13 +50,17 @@ A correct installation of FIDASH must have all the FIDASH widgets, as described 
 
 The permissions have to be tested by service:
 
-* To check OpenStack-based services deploy ImagesList widget on any dashboard. It should list the public images.
+* To check OpenStack-based services deploy ListImages widget on any dashboard. It should list the public images.
 * To check Monitoring services deploy Resource Usage widget and display information about different regions, in case some of them has these services not available. Graphs showing the RAM, CPU, IP addresses and storage used should appear.
 * To check SLA Management deploy Embedded SLA Manager. The web interface of the manager should appear inside the widget
 
 ## User manual
 
 The instructions for FIDASH users, including the creating dashboards, customize existing ones and modify their behaviour is described in the [User Guide](docs/user_guide/user_guide.md)
+
+## Developer guide
+
+The instructions for developing new widgets or modifying existing are described in the [Developer Guide](docs/developer/developer_guide.md)
 
 ## Know issues
 
