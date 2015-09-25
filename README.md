@@ -37,7 +37,7 @@ The default widgets in FIDASH are:
 * List Volumes: <https://github.com/fidash/widget-listvolumes.git>
 * Resources Usage: <https://github.com/fidash/widget-resourcesusage.git>
 * Embedded SLA Manager: <https://github.com/fidash/widget-embedded-SLAManager>
-* SLA Manager: <https://github.com/fidash/widget-embedded-SLAManager>
+* SLA Manager: <https://github.com/fidash/widget-SLAManager>
 
 
 ## Installation manual
