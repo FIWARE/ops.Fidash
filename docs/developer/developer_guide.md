@@ -6,7 +6,7 @@
 
 A *widget* is composed by one or more HTML files, JavaScript and CSS files referenced in the HTML, and a config.xml file.
 
-```bash
+```
 ├── config.xml
 ├── index.html
 ├── css
@@ -216,7 +216,7 @@ The structure explained in this section should not be taken as mandatory since t
 
 The root folder will contain all configuration files (karma, jshint, grunt, etc.) along with the project's documentation, license and package.json file. The root will contain initially one folder, the `src` folder, but two others could be created along the development process: `node_modules` and `build`.
 
-```bash
+```
 ├── build
 │   ├── coverage
 │   ├── helpers
