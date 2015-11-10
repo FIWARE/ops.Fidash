@@ -1,5 +1,40 @@
-An existing mashup or a new one (accessible from the mashup menu button ![menu button](images/menu.png)) shall be used.
+Users should be able to log in FIDASH platform at [https://dash.lab.fiware.org](https://dash.lab.fiware.org) using their own FIWARE Lab user. In case a user does not have a FIWARE Lab user, it should be requested at the [IdM GE](https://account.lab.fiware.org/).
 
+The firts time the user tries to log into FIDASH she will be requested to allow access to the application FIDASH.
+
+> Sometimes, this authorization requests does not appear, and the access to FIDASH platform must be retried. And sometimes IdM does not return to FIDASH after authorization, so it has to be done by user browsing again to [https://dash.lab.fiware.org](https://dash.lab.fiware.org).
+
+The main view of FIDASH is an empty dashboard where the user can create her own dashboard from scratch. However, the fastest way to start is instantiating a previously created dashboard, as explained below. The user is able to create multiple dashboards, to modify them (even the ones created instantiating a existing one), or to create themo from scratch.
+
+In any case, the button for all of the dashboard-related tasks, including accessing existing ones, deleting, creating new ones or accessing their settings is this one: ![menu button](images/menu.png)
+
+### Instantiate dashboards
+
+In case a previously created dashboard is to be used, either by having been created by the user, uploaded by her or it is a publicly available dashboard, as they are on the platform.
+
+In FIDASH, dashboards appear as mashups in the **My Resources** section. 
+
+![Access to My Resources](images/my-resources.png)
+
+Clicking on _My Resources_ button takes the user to the full list of resources, where some of them are labeled with the tag **mashup**. Those are the dashboards that can be instantiated. 
+
+![My Resources screen](images/my-resources-screen.png)
+
+Documentation of widgets, operators and mashups is accessible on that screen by clicking on any of them.
+
+In case the user wants to deploy one of the dashboards (the mashups), she must back to the dashboard view, use the menu button (![menu button](images/menu-small.png)) and chooose **New workspace** option. In next window, a lookup icon displays the list of mashups (the dashboards), and the user does only have to choose one of them by clicking on the select button.
+
+![Choose dashboard](images/choose-mashup.png)
+
+If no name is specified, the new dashboard will inherit the name of the mashup. In any case, it will appear on the list of workspaces accessible through the ![menu button](images/menu-small.png) button.
+
+This dashboard can be customized as the user wishes:
+
+* Size of the widgets can be changed dragging the lower-right corner of them
+* Position of the widgets can be changed by clicking on the top bar of them
+* Widgets may have some options accessible through their settings menu that appears when the mouse stops over the top-right corner of the widget ![Choose dashboard](images/widget-menu.png)
+
+User can also remove widgets (cross next to the options menu of the widget), add new widgets or modify the behaviour through wiring. Next sections describe the latter options in detail.
 
 ### Instantiate widgets
 
@@ -44,3 +79,11 @@ All the widgets related to OpenStack services are divided into two categories, l
 An example of connections of a simple dashboard containing one instance of every widget would be the one shown in the image below. In this case, Detail image would display the details of an image clicked on the details of an instance, on the list of instances (has a image column) or on the list of images.
 
 ![basic wiring](images/basic-wiring.png)
+
+### Publishing your own dashboard
+
+Once a dashboard is created, having settled the desired layout, the wiring, the properties, etc., it can be saved for the future, of for sharing with other users. This can be done by clicking on the menu button (![menu button](images/menu-small.png)) and choosing _Upload to my resources_. User must indicate vendor, version number, email, and some brief description. On other tabs an icon can be added (170x80 px), and some other options such as block the widgets in the mashup, block the connections, or embed the widgets or operators inside the dashboard (not only linking them by reference).
+
+![Upload dashboard](images/upload-dashboard.png)
+
+After uploading the dashboard, **My Resources** section will display a new resource with the chosen name. This dashboard can be instantiated or downloaded (to be shared with others).
