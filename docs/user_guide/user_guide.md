@@ -1,3 +1,18 @@
+# Dashboard creation and editing
+
+## Using a pre-created dashboard
+
+FIDASH comes with pre-created dashboards that can be instantiated and used in seconds. To do this, button ![menu button](images/menu.png) shall be used to create a new dashboard. In the template-selection screen, click the search button, and all the available dashboards will appear.
+
+![template selection](images/template-selection.png)
+
+Select button of the desired dashboard is to be clicked. If no name is specified, new workspace will be created with the name of the dashboard.
+
+![dashboard selection](images/dashboard-selection.png)
+
+
+## Dashboard customization
+
 An existing mashup or a new one (accessible from the mashup menu button ![menu button](images/menu.png)) shall be used.
 
 
@@ -44,3 +59,48 @@ All the widgets related to OpenStack services are divided into two categories, l
 An example of connections of a simple dashboard containing one instance of every widget would be the one shown in the image below. In this case, Detail image would display the details of an image clicked on the details of an instance, on the list of instances (has a image column) or on the list of images.
 
 ![basic wiring](images/basic-wiring.png)
+
+# Usage of components
+
+## Flavor Sync
+
+Glance Sync functionality is composed of two widgets:
+
+* **Compare Flavors**: It lists reference flavors on the left, and flavors of the current region on the right. The current region is chosen among the ones that the user is _infrastructure owner_. User can select one flavor on each column, and according to that selection, the widget allows the user to:
+	* copy ![copy](images/copy.png) (left-column selected to current region)
+	* replace ![replace](images/replace.png) (right-columnt selected with left-column selected)
+	* delete ![delete](images/delete.png) (right-columnt selected)
+
+	Besides, widget eases the task of comparing by hiding ![hide/show equals](images/hide-show equals.png) the flavors that are compatible on the left and on the right. And the selections can be cleared ![clear](images/clear.png).
+	
+	![compare flavors](images/compare flavors.png)
+
+* **Show flavor differences**: with the widgets selected on **compare flavors** widget, this one shows their details highlighting the differences.
+ 
+    ![show flavor differences](images/show flavor differences.png)
+
+## Maintennance calendar
+
+Calendar widget is a horizontal-based timeline, where each region is placed on a different row, plus one for no-maintennance requests. Users must have proper rights to create events on a certain row, by veing infrastructure owner or the region or by being designated as authorized for creating no-maintenance requests. By _double clicking_ on the specified row (whenerer user is authorized), a modal dialog appears to enter details. Textual description must be written here, but timing can be stablished back on the calendar.
+
+![calendar](images/calendar.png)
+
+By clicking on an event that the user can modify, interface changes being able to delete it or, more important, drag edges to the desired values.
+
+![calendar edit](images/calendar edit.png)
+
+Another interesting feature is the **zooming** function. By clicking _shift_ key and using the scroll, horizontal zooming happens, allowing to select the time-frame to be shown. Calendar can be also dragged horizontally to move on the current zoom level. 
+
+## Monitoring
+
+### Monitoring regions
+
+General data about different regions is shown in **Monitoring Regions** widget. It shows virtual CPUs, RAM, disk space and public IPs in a percentage ratio of total/used and a circular graph. It does also indicate real values on tooltip when mouse is over a graph. For CPU and RAM usage, virtual values (applied the overcommit ratio) are shown.
+
+Widget is flexible in two ways:
+
+* it allows choosing one or many regions, via its region selector or receiving them by wiring from the **region selector widget**. Each region is shown in a specific card, and those cards are arranged in columns automatically according to the vertical and horizontal space of widget vs cards.
+* it allows user to focus on the desired measures (vCPU, RAM, disk and IP addresses). It works together with the selection of regions, and allows for a flexible creation of specific purpose views.
+
+It's worth saying that the widget, as all of them, can be instantiated multiple times, focusing a given instance on a specific purpose, such as global status of computing or free IP addresses, or monitoring of the set of regions of interest (e.g. the ones hat are hosting one application).
+
