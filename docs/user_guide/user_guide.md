@@ -140,6 +140,17 @@ By _double clicking_ on the specified row (whenerer user is authorized), a modal
 
 Another interesting feature is the **zooming** function. By clicking _shift_ key while using the scroll, horizontal zooming happens, allowing to select the time-frame to be shown. Calendar can be also dragged horizontally to move on the current zoom level. Zooming function ranges from years to hours level.
 
+### Exporting to ICS
+
+FITOOKIT did create the backend, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
+
+* Microsoft Outlook: On Calendar Ssection, `Open calendar` -> `From Internet`, and paste the URL
+* OS X's Calendar: Click on `File` -> `New calendar subscription...` and paste the URL
+* Google Calendar: Go to calendar setiings, and click on the link `Browse interesting calendars` which is located below the list of personal calendars. On next screen click on `Add by URL` and paste the URL.
+
+    > Google Calendar does refresh external ICSs on an un-specified frequency that seems to be around 24 hours.
+
+
 ## Monitoring
 
 ### Monitoring regions
