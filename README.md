@@ -35,10 +35,18 @@ The default widgets in FIDASH are:
 * List Images: <https://github.com/fidash/widget-listimages.git>
 * List Instances: <https://github.com/fidash/widget-listinstances.git>
 * List Volumes: <https://github.com/fidash/widget-listvolumes.git>
-* Resources Usage: <https://github.com/fidash/widget-resourcesusage.git>
-* Embedded SLA Manager: <https://github.com/fidash/widget-embedded-SLAManager>
-* SLA Manager: <https://github.com/fidash/widget-SLAManager>
-
+* Embedded SLA Manager: <https://github.com/fidash/widget-embedded-SLAManager.git>
+* SLA Manager: <https://github.com/fidash/widget-SLAManager.git>
+* Select Regions: <https://github.com/fidash/widget-selectregion.git>
+* Monitor Regions: <https://github.com/fidash/widget-monitorregions.git>
+* Monitor VMs: <https://github.com/fidash/widget-monitorvms.git>
+* Monitor Hosts: <https://github.com/fidash/widget-monitorhosts.git>
+* Calendar: <https://github.com/fidash/widget-calendar.git>
+* Show Difference Flavors: <https://github.com/fidash/widget-showdifferenceflavors.git>
+* Compare Flavors: <https://github.com/fidash/widget-compareflavors.git>
+* Manage Promoted Flavors: <https://github.com/fidash/widget-managepromotedflavors.git>
+* Synchronize Images: <https://github.com/fidash/widget-syncimages.git>
+* Operator Authentication: <https://github.com/fidash/operator-auth.git>
 
 ## Installation manual
 
