@@ -41,6 +41,9 @@ The default widgets in FIDASH are:
 * Monitor Regions: <https://github.com/fidash/widget-monitorregions.git>
 * Monitor VMs: <https://github.com/fidash/widget-monitorvms.git>
 * Monitor Hosts: <https://github.com/fidash/widget-monitorhosts.git>
+* Historical Monitor Regions: <https://github.com/fidash/widget-historicalregions.git>
+* Historical Monitor VMs: <https://github.com/fidash/widget-historicalvms.git>
+* Historical Monitor Hosts: <https://github.com/fidash/widget-historicalhosts.git>
 * Calendar: <https://github.com/fidash/widget-calendar.git>
 * Show Difference Flavors: <https://github.com/fidash/widget-showdifferenceflavors.git>
 * Compare Flavors: <https://github.com/fidash/widget-compareflavors.git>
