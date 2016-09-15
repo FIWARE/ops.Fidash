@@ -123,6 +123,20 @@ The wiring connections must be defined on the wiring tool as described above, li
 
 ![SelectRegion widget wiring example](images/select-regions-wiring-example.png)
 
+## Data usage (top tenants)
+
+Data usage is a useful widget to see, at a glance, what are the most resource consuming tenants, and what resources might be over- or under-provisioned. It does make use of the data usage feature inside monitoring infrastructure, which collects and reports an anonymized list of top tenants on different measures: number of instances, total RAM reserved, number of vCPUs, percentage of RAM used and percentage of CPU used. While some of them are absolute values representing amount of resources reserved, others indicate the degree of usage of those resources. Therefore, they can be easily compared.
+
+![Data usage widget](images/data-usage.png)
+
+Top tenants can be also be sorted and listed according to any of that 5 measures by using the top 5 coloured buttons, that obtain the data sorted by that specific column.
+
+Data inside columns is scaled according to the highest value in the set. As an example, in RAM column where values migh be 2 GB, 8 GB and 12 GB, the latter would be represented with a coloured bar of 100% of width, scaling the rest accordingly. It does also happens on percentage values, which are not adjusted up to 100%, but up to the highest value in the set of tenants to be shown.
+
+Specific values can also be read by leaving the cursos over a row for some seconds:
+
+![Data usage tooltip](images/data-usage-tooltip.png)
+
 ## Flavor Sync
 
 Glance Sync functionality is composed of two widgets:
