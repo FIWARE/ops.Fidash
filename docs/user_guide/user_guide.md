@@ -111,6 +111,18 @@ After uploading the dashboard, **My Resources** section will display a new resou
 
 # Usage of components
 
+## Regions selector
+
+This widget has no useful functionality on its own, but can be combined with some other widgets so as to simplify the selection of regions. Many of the widgets of FIDASH do offer the possibility to choose among the set of regions to operate. This is the case of monitoring widgets and OpenStack-based ones. In that case, widgets individually allow the selection of regions, and they do internally save that user preference. However, when a user wants to a set of widgets in a dashboard operate over the same set of regions, it is not agile configuring all of them. This is where Regions Selector widget simplifies the task.
+
+This widget exposes the full list of regions and sends, using the wiring mechanism, the list of selected regions to any widget connected to it. Therefore, it is up to the user to decide what widgets to wire to it.
+
+![Select Region widget](images/select-region.png)
+
+The wiring connections must be defined on the wiring tool as described above, linking the _output endpoint_ of Select Region with the _input endpoint_ of the desired widget/s. This is an example of the widget instantiated and wired to three more instantiated widgets:
+
+![SelectRegion widget wiring example](images/select-regions-wiring-example.png)
+
 ## Flavor Sync
 
 Glance Sync functionality is composed of two widgets:
@@ -180,3 +192,71 @@ Widget is flexible in two ways:
 * it allows user to focus on the desired measures (vCPU, RAM, disk and IP addresses). It works together with the selection of regions, and allows for a flexible creation of specific purpose views.
 
 It's worth saying that the widget, as all of them, can be instantiated multiple times, focusing a given instance on a specific purpose, such as global status of computing or free IP addresses, or monitoring of the set of regions of interest (e.g. the ones hat are hosting one application).
+
+## OpenStack management widgets
+
+The set of OpenStack-based widgets allow for a basic management of personal elements on FIWARE Lab. It does not intend to replace FIWARE Cloud interface, but to serve a subset of its functionality inside FIDASH, so as users can create dashboards adding information about her own resources. As a differentiation, OpenStack-based widgets are by default _multi-region_, so images, instances, volumes and flavors can be browsed of one, all or several regions at once.
+
+### Instances
+
+User instances can be obtained from any region using [ListInstances](https://github.com/fidash/widget-listinstances) widget, and the details of a given instance can be seen using [DetailsInstance](https://github.com/fidash/widget-detailinstance) widget. When a user clicks on an instance of the list, it is shown on the details widget. Both widgets used together can be seen in following image:
+
+![ListInstances and DisplayInstance widgets](images/instances-widgets.png)
+
+Instances can be rebooted, but further options are to be done on Cloud portal.
+
+The regions where to search for instances can be chosen using the button ![select regions button](images/select-region-button.png), where the list of regions appears and user can select them:
+
+![select regions](images/list-instances-select-region.png)
+
+Alternative, _Regions Selector_ widget can be instantiated and wired to the list of instances so as to update the list as soon as it is modified in _Regions Selector_ widget.
+
+#### Wiring
+
+_Detail Instance_ widget does require receiving instance ID through wiring. Therefore, the easiest way is to link it to _List Instances_ widget.
+
+Moreover, these OpenStack management widgets do perform authentication externally, using an operator called _OpenStack auth operator_. Therefore, such operator must be also instantiated and linked to these widgets. Besides, _Regions Selector_ widget might be also used to externalize the selection of regions and to be shared among different widgets, such as _List Volumes_ and _List Flavors_, to be described below.
+
+This is an example of the required wiring for working with instances:
+
+![Wiring of widgets about instances](images/instances-wiring.png)
+
+### Volumes
+
+User volumes are listed and detailed with _List Volumes_ widget and _Detail Volume_ widget. These widgets work simmilar to the images-related widgets, operating at any region and selecting the regions internally or through the _Regions Selector_.
+
+![Volumes widgets](images/volumes-widgets.png)
+
+Volumes can be created using the ![plus button](images/plus-button.png) button, only allowing basic options such as name, size or region. Please bear in mind that the selected region might not be currently selected, so recently created volume might not be seen until that selection is displayed.
+
+#### Wiring
+
+Volume ID is sent to the _Details Volume_ widget by the _List Volumes_ widget whenever a user clicks on a row of the list.
+
+Both widgets do require external OpenStack authentication details through the _OpenStack auth operator_, so it must be connected to them. It is worth mentioning that a single instance of such operator can be connected to any widget receiving authentication details through wiring.
+
+![Wiring of widgets about volumes](images/volumes-wiring.png)
+
+### Images
+
+The widgets working with images are similar to the aforementioned ones working with volumes and instances. The main difference is that images show can be private to the user, or public in a given region.
+
+![images widgets](images/images-widgets.png)
+
+Images can also be added from disk or URL by choosing basic parameters, by using the ![plus button](images/plus-button.png) button on the list widget. And they can be set to run with :
+
+![create an image](images/image-create.png)
+
+#### Wiring
+
+Image ID is required to be sent from _Image List_ to _Image Detail_, as a basic connection. Besides, authentication using _OpenStack auth operator_ is also required.
+
+As an extra detail, instance-based widgets, both _Instance List_ and _Instance Detail_ do offer the image ID of the image on which is based the instance, so _Image Detail_ can be also used to display the image related to an instance, not requiring _List Image_ widget.
+
+![Example wiring of images widgets](images/images-wiring.png)
+
+### Flavors
+
+Flavors can be easily listed with _List Flavors_ widget. This widget is not administrative, so it has not flavors-managing functions such as described in Sync Flavors section. Indeed, authentication is more simple, so it does not need _OpenStac Auth Operator_.
+
+![List Flavors widget](images/list-flavors-widget.png)
