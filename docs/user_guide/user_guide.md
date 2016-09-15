@@ -21,11 +21,11 @@ Select button of the desired dashboard is to be clicked. If no name is specified
 
 An existing mashup or a new one (accessible from the mashup menu button ![menu button](images/menu.png)) shall be used.
 
-The firts time the user tries to log into FIDASH she will be requested to allow access to the application FIDASH.
+The first time the user tries to log into FIDASH she will be requested to allow access to the application FIDASH.
 
 > Sometimes, this authorization requests does not appear, and the access to FIDASH platform must be retried. And sometimes IdM does not return to FIDASH after authorization, so it has to be done by user browsing again to [https://dash.lab.fiware.org](https://dash.lab.fiware.org).
 
-The main view of FIDASH is an empty dashboard where the user can create her own dashboard from scratch. However, the fastest way to start is instantiating a previously created dashboard, as explained below. The user is able to create multiple dashboards, to modify them (even the ones created instantiating a existing one), or to create themo from scratch.
+The main view of FIDASH is an empty dashboard where the user can create her own dashboard from scratch. However, the fastest way to start is instantiating a previously created dashboard, as explained below. The user is able to create multiple dashboards, to modify them (even the ones created instantiating a existing one), or to create them from scratch.
 
 In any case, the button for all of the dashboard-related tasks, including accessing existing ones, deleting, creating new ones or accessing their settings is this one: ![menu button](images/menu.png)
 
@@ -43,7 +43,7 @@ Clicking on _My Resources_ button takes the user to the full list of resources, 
 
 Documentation of widgets, operators and mashups is accessible on that screen by clicking on any of them.
 
-In case the user wants to deploy one of the dashboards (the mashups), she must back to the dashboard view, use the menu button (![menu button](images/menu-small.png)) and chooose **New workspace** option. In next window, a lookup icon displays the list of mashups (the dashboards), and the user does only have to choose one of them by clicking on the select button.
+In case the user wants to deploy one of the dashboards (the mashups), she must back to the dashboard view, use the menu button (![menu button](images/menu-small.png)) and choose **New workspace** option. In next window, a look-up icon displays the list of mashups (the dashboards), and the user does only have to choose one of them by clicking on the select button.
 
 ![Choose dashboard](images/choose-mashup.png)
 
@@ -117,8 +117,8 @@ Glance Sync functionality is composed of two widgets:
 
 * **Compare Flavors**: It lists reference flavors on the left, and flavors of the current region on the right. The current region is chosen among the ones that the user is _infrastructure owner_. User can select one flavor on each column, and according to that selection, the widget allows the user to:
 	* copy ![copy](images/copy.png) (left-column selected to current region)
-	* replace ![replace](images/replace.png) (right-columnt selected with left-column selected)
-	* delete ![delete](images/delete.png) (right-columnt selected)
+	* replace ![replace](images/replace.png) (right-column selected with left-column selected)
+	* delete ![delete](images/delete.png) (right-column selected)
 
 	Besides, widget eases the task of comparing by hiding ![hide/show equals](images/hide-show equals.png) the flavors that are compatible on the left and on the right. And the selections can be cleared ![clear](images/clear.png).
 	
@@ -128,13 +128,13 @@ Glance Sync functionality is composed of two widgets:
  
     ![show flavor differences](images/show flavor differences.png)
 
-## Maintennance calendar
+## Maintenance calendar
 
-Calendar widget is a horizontal-based timeline, where each region is placed on a different row, plus one for no-maintennance requests. Users must have proper rights to create events on a certain row, by veing infrastructure owner or the region or by being designated as authorized for creating no-maintenance requests. Roles in grey color are not writtable by the user, whereas he does have permission to write on white ones. A regular lab user shall see all the calendar marked in grey.
+Calendar widget is a horizontal-based time-line, where each region is placed on a different row, plus one for no-maintenance requests. Users must have proper rights to create events on a certain row, by being infrastructure owner or the region or by being designated as authorized for creating no-maintenance requests. Roles in grey color are not writable by the user, whereas he does have permission to write on white ones. A regular lab user shall see all the calendar marked in grey.
 
 ![calendar](images/calendar.png)
 
-By _double clicking_ on the specified row (whenerer user is authorized), a modal dialog appears to enter details. Textual description must be written here, but timing can be stablished back on the calendar. By _clicking_ on an event that the user can modify, interface changes being able to delete it or, more important, drag edges to the desired values for modifying start and end date and time.
+By _double clicking_ on the specified row (whenever user is authorized), a modal dialog appears to enter details. Textual description must be written here, but timing can be established back on the calendar. By _clicking_ on an event that the user can modify, interface changes being able to delete it or, more important, drag edges to the desired values for modifying start and end date and time.
 
 ![calendar edit](images/calendar edit.png)
 
@@ -142,11 +142,11 @@ Another interesting feature is the **zooming** function. By clicking _shift_ key
 
 ### Exporting to ICS
 
-FITOOKIT did create the backend, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
+FITOOKIT did create the back-end, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
 
-* Microsoft Outlook: On Calendar Ssection, `Open calendar` -> `From Internet`, and paste the URL
+* Microsoft Outlook: On Calendar Section, `Open calendar` -> `From Internet`, and paste the URL
 * OS X's Calendar: Click on `File` -> `New calendar subscription...` and paste the URL
-* Google Calendar: Go to calendar setiings, and click on the link `Browse interesting calendars` which is located below the list of personal calendars. On next screen click on `Add by URL` and paste the URL.
+* Google Calendar: Go to calendar settings, and click on the link `Browse interesting calendars` which is located below the list of personal calendars. On next screen click on `Add by URL` and paste the URL.
 
     > Google Calendar does refresh external ICSs on an un-specified frequency that seems to be around 24 hours.
 
