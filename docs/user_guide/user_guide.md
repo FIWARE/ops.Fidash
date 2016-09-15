@@ -130,19 +130,36 @@ Glance Sync functionality is composed of two widgets:
 
 ## Maintenance calendar
 
-Calendar widget is a horizontal-based time-line, where each region is placed on a different row, plus one for no-maintenance requests. Users must have proper rights to create events on a certain row, by being infrastructure owner or the region or by being designated as authorized for creating no-maintenance requests. Roles in grey color are not writable by the user, whereas he does have permission to write on white ones. A regular lab user shall see all the calendar marked in grey.
+Calendar widget is a horizontal-based time-line, where each region is placed on a different row, plus one for no-maintenance requests.
+
+This widget depends on specific **roles** assigned to the user. According to the roles, display and actions differ:
+
+* For **non-authorized users**, the calendar is read-only, displaying the maintennance events of every region. Every row is shown on grey color
+* For **infrastructure owners on certain regions** the calendar allows the creation events. The user must have been granted the role `InfrastructureOwner` on those regions, which will appear in white color denoting they are writtable.
+* For **uptime requesters**, who are users allowed to request _no-maintenance_ periods, thus requireing the role `UptimeRequester`, the first row does appear on white and is writtable.
 
 ![calendar](images/calendar.png)
 
-By _double clicking_ on the specified row (whenever user is authorized), a modal dialog appears to enter details. Textual description must be written here, but timing can be established back on the calendar. By _clicking_ on an event that the user can modify, interface changes being able to delete it or, more important, drag edges to the desired values for modifying start and end date and time.
+> Widget might take some seconds to fully load regions, roles and events. On this time it does not display rows.
+
+### Creation, deletion and edition of events
+
+Rows in grey color are not writable by the user, whereas he does have permission to write on white ones according to her designated roles. A regular lab user shall see all the calendar marked in grey.
+
+By _double clicking_ on a certain white row (whenever user is authorized), a modal dialog appears to enter details. Textual description must be written here, but timing can be established back on the calendar. By _clicking_ on an event that the user can modify, interface changes being able to delete it or, more important, drag edges to the desired values for modifying start and end date and time.
 
 ![calendar edit](images/calendar edit.png)
 
-Another interesting feature is the **zooming** function. By clicking _shift_ key while using the scroll, horizontal zooming happens, allowing to select the time-frame to be shown. Calendar can be also dragged horizontally to move on the current zoom level. Zooming function ranges from years to hours level.
+### Modifying the displayed time-frame
+
+Besides the dashboard option to resize the calendar, that might display every region or not, and does increase/decreas the time-frame displayed (on horizontal resizes), the displayed time-frame can be modified in two senses:
+
+* Moving to future or past dates by horizontal _dragging_ on any part of the calendar
+* Zooming by clicking _shift_ key while using the scroll. It does produce horizontal zooming, allowing to select the time-frame to be shown. Zooming function ranges from years to hours level.
 
 ### Exporting to ICS
 
-FITOOKIT did create the back-end, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
+FITOOKIT did create the back-end, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, linked to the ![ical link](images/ical.gif) image in widget, is accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), and can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
 
 * Microsoft Outlook: On Calendar Section, `Open calendar` -> `From Internet`, and paste the URL
 * OS X's Calendar: Click on `File` -> `New calendar subscription...` and paste the URL
