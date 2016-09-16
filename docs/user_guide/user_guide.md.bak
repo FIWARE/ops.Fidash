@@ -115,8 +115,6 @@ After uploading the dashboard, **My Resources** section will display a new resou
 
 This widget has no useful functionality on its own, but can be combined with some other widgets so as to simplify the selection of regions. Many of the widgets of FIDASH do offer the possibility to choose among the set of regions to operate. This is the case of monitoring widgets and OpenStack-based ones. In that case, widgets individually allow the selection of regions, and they do internally save that user preference. However, when a user wants to a set of widgets in a dashboard operate over the same set of regions, it is not agile configuring all of them. This is where Regions Selector widget simplifies the task.
 
-This widget does also allow a one-click selection of every region.
-
 This widget exposes the full list of regions and sends, using the wiring mechanism, the list of selected regions to any widget connected to it. Therefore, it is up to the user to decide what widgets to wire to it.
 
 ![Select Region widget](images/select-region.png)
@@ -133,19 +131,19 @@ Data usage is a useful widget to see, at a glance, what are the most resource co
 
 Top tenants can be also be sorted and listed according to any of that 5 measures by using the top 5 coloured buttons, that obtain the data sorted by that specific column.
 
-Data inside columns is scaled according to the highest value in the set. As an example, in RAM column where values might be 2 GB, 8 GB and 12 GB, the latter would be represented with a coloured bar of 100% of width, scaling the rest accordingly. It does also happens on percentage values, which are not adjusted up to 100%, but up to the highest value in the set of tenants to be shown.
+Data inside columns is scaled according to the highest value in the set. As an example, in RAM column where values migh be 2 GB, 8 GB and 12 GB, the latter would be represented with a coloured bar of 100% of width, scaling the rest accordingly. It does also happens on percentage values, which are not adjusted up to 100%, but up to the highest value in the set of tenants to be shown.
 
-Specific values can also be read by leaving the cursor over a row for some seconds:
+Specific values can also be read by leaving the cursos over a row for some seconds:
 
 ![Data usage tooltip](images/data-usage-tooltip.png)
 
-The widget works on it own and has no input or output endpoints. Tenant IDs have been partially hidden, so there is no possibility to list the VMs, even with admin roles.
+The widget works on it own and has no input or output endpoints. Tenand IDs have been partially hidden, so there is no possibility to list the VMs, even with admin roles.
 
 No authentication is required to make the requests, therefore this widget can be part of a public dashboard, which might also be embedded elsewhere.
 
 ## OpenStack Installed Versions
 
-This widget is named after the the back-end FITOOLKIT functionality that reports the version of different OpenStack components across different FIWARE Lab nodes (a.k.a. regions).
+This widget is named after the the backend FITOOLKIT functionality that reports the version of different OpenStack components across different FIWARE Lab nodes (a.k.a. regions).
 
 ![OS installed versions](images/installed-versions-widget.png)
 
@@ -155,7 +153,7 @@ No authentication is required to make the requests, therefore this widget can be
 
 ## Generic Enablers Global Instances status
 
-This widget is based on FIHEALTH functionality that monitors and reports the status of different services on the hosts containing the global instances of the Generic Enablers. The widget displays hosts in cards identified by the instance address, which contains the status of the different services monitored in a scale of values that include OK, CRITICAL, WARNING, and UNKNOWN. Values are displayed on colors according to severity.
+This widget is based on FIHEALTH functionality that monitors and reports the status of different services on the hosts containing the globa instances of the Generic Enablers. The widget displays hosts in cards identified by the instance address, which contains the status of the different services monitored in a scale of values that include OK, CRITICAL, WARNING, and UNKNOWN. Values are displayed on colors acording to severity.
 
 ![Global Instances widget](images/global-instances-widget.png)
 
@@ -178,66 +176,15 @@ Glance Sync functionality is composed of two widgets:
  
     ![show flavor differences](images/show flavor differences.png)
 
-## Monitoring
-
-Real time monitoring is performed at different levels: **regions**, **hosts** and **virtual machines**. FIDASH monitoring has dedicated widgets for such levels, all of them with high customization possibilities. In all 3 widgets, regions can be filtered, and user can choose which measures to display, so the same widget can be instantiated many times, each of them devoted to a specific task: every measure of every region; every measure of a given region; one specific measure in every regions; or any intermediate point between them.
-
-### Common features
-
-These 3 widgets share some **common features**:
-
-* Selection roller shutter: it is a pane that acts as a roller shutter, and can be displayed or hidden by clicking on the ![shutter-button](images/monitor-shutter-button.png) button.
-* Column selection inside the roller shutter, which serves both for showing/hiding comuns using sliders, and sorting according to such column using the up and down arrows.
-
-    ![Columns selector](images/monitor-columns-selector.png)
-
-* Rearranging the cards with data on the number of columns that best fit the actual horizontal size of the widget
-
-#### Monitoring regions
-
-This widget shows, per region, vCPUs, RAM, Disk space and IPs, displaying in circle graphs the percentage of that resources used. It does also show absolute data and other info on tooltips:
-* vCPU: number of total and used vCPUs, and overcommit ratio used.
-* RAM: number of total and used GBs of RAM, and overcommit ration used.
-* Disk: number of total and used TBs of disk space.
-* IPs: number of total, allocated, and assigned IP addresses. The data shown in graph is the percentage of total IP addresses that are allocated, whereas some of them might not be currently assigned to a VM.
-
-![Monitor regions widget](images/monitor-regions.png)
-
-#### Monitoring hosts
-
-This widget lists the hosts in each of the selected regions, displaying for all of them: CPU usage percentage, RAM usage percentage and Disk usage percentage. Data is shown on tooltips when leaving the mouse over one host for some seconds.
-
-![Monitor hosts widget](images/monitor-hosts.png)
-
-#### Monitoring virtual machines
-
-This widget is similar to the former, and lists the virtual machines in each of the selected regions, displaying for all of them: CPU usage percentage, RAM usage percentage and Disk usage percentage. Data is shown on tooltips when leaving the mouse over one host for some seconds.
-
-> At the time of writing, versions over 0.10.4 do use newer API for optimizing requests, though no data is being correctly collected on them.
-
-![Monitor virtual machines widget](images/monitor-vms.png)
-
-### Usage examples
-
-The aforementioned widgets can be instantiaded as many times as desired, resized and re-arranged as user decides, and they can be individually devoted to one or many regions, one or many columns, etc. They can only be linked with the regions selector widget. This does allow for unlimited monitoring dashboards. Some options are shown below for ilustration purposes:
-
-**Monitoring specific data on every region**
-
-![Monitoring specific data on regions](images/monitoring-specific-data.png)
-
-**Monitoring data on a certain region**
-
-![Monitoring data on a certain region](images/monitoring-one-region.png)
-
 ## Maintenance calendar
 
 Calendar widget is a horizontal-based time-line, where each region is placed on a different row, plus one for no-maintenance requests.
 
 This widget depends on specific **roles** assigned to the user. According to the roles, display and actions differ:
 
-* For **non-authorized users**, the calendar is read-only, displaying the maintenance events of every region. Every row is shown on grey color
-* For **infrastructure owners on certain regions** the calendar allows the creation events. The user must have been granted the role `InfrastructureOwner` on those regions, which will appear in white color denoting they are writable.
-* For **uptime requesters**, who are users allowed to request _no-maintenance_ periods, thus requiring the role `UptimeRequester`, the first row does appear on white and is writable.
+* For **non-authorized users**, the calendar is read-only, displaying the maintennance events of every region. Every row is shown on grey color
+* For **infrastructure owners on certain regions** the calendar allows the creation events. The user must have been granted the role `InfrastructureOwner` on those regions, which will appear in white color denoting they are writtable.
+* For **uptime requesters**, who are users allowed to request _no-maintenance_ periods, thus requireing the role `UptimeRequester`, the first row does appear on white and is writtable.
 
 ![calendar](images/calendar.png)
 
@@ -253,14 +200,14 @@ By _double clicking_ on a certain white row (whenever user is authorized), a mod
 
 ### Modifying the displayed time-frame
 
-Besides the dashboard option to resize the calendar, that might display every region or not, and does increase/decrease the time-frame displayed (on horizontal resizes), the displayed time-frame can be modified in two senses:
+Besides the dashboard option to resize the calendar, that might display every region or not, and does increase/decreas the time-frame displayed (on horizontal resizes), the displayed time-frame can be modified in two senses:
 
 * Moving to future or past dates by horizontal _dragging_ on any part of the calendar
 * Zooming by clicking _shift_ key while using the scroll. It does produce horizontal zooming, allowing to select the time-frame to be shown. Zooming function ranges from years to hours level.
 
 ### Exporting to ICS
 
-FITOOLKIT did create the back-end, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, linked to the ![ical link](images/ical.gif) image in widget, is accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), and can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
+FITOOKIT did create the back-end, and a public ICS calendar is exported with the events of every region in a single calendar. This calendar, linked to the ![ical link](images/ical.gif) image in widget, is accessible at URL [http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab](http://130.206.113.159:8085/api/v1/ics/maintenanceCalendarFiwareLab), and can be integrated in Outlook, Thunderbird, OS X's Calendar, Google Calendar, etc. This would be the basic instructions for integrating the calendar:
 
 * Microsoft Outlook: On Calendar Section, `Open calendar` -> `From Internet`, and paste the URL
 * OS X's Calendar: Click on `File` -> `New calendar subscription...` and paste the URL
@@ -273,7 +220,7 @@ FITOOLKIT did create the back-end, and a public ICS calendar is exported with th
 
 ### Monitoring regions
 
-General data about different regions is shown in **Monitoring Regions** widget. It shows virtual CPUs, RAM, disk space and public IPs in a percentage ratio of total/used and a circular graph. It does also indicate real values on tooltip when mouse is over a graph. For CPU and RAM usage, virtual values (applied the over-commit ratio) are shown.
+General data about different regions is shown in **Monitoring Regions** widget. It shows virtual CPUs, RAM, disk space and public IPs in a percentage ratio of total/used and a circular graph. It does also indicate real values on tooltip when mouse is over a graph. For CPU and RAM usage, virtual values (applied the overcommit ratio) are shown.
 
 Widget is flexible in two ways:
 
@@ -312,7 +259,7 @@ This is an example of the required wiring for working with instances:
 
 ### Volumes
 
-User volumes are listed and detailed with _List Volumes_ widget and _Detail Volume_ widget. These widgets work similar to the images-related widgets, operating at any region and selecting the regions internally or through the _Regions Selector_.
+User volumes are listed and detailed with _List Volumes_ widget and _Detail Volume_ widget. These widgets work simmilar to the images-related widgets, operating at any region and selecting the regions internally or through the _Regions Selector_.
 
 ![Volumes widgets](images/volumes-widgets.png)
 
@@ -346,6 +293,6 @@ As an extra detail, instance-based widgets, both _Instance List_ and _Instance D
 
 ### Flavors
 
-Flavors can be easily listed with _List Flavors_ widget. This widget is not administrative, so it has not flavors-managing functions such as described in Sync Flavors section. Indeed, authentication is more simple, so it does not need _OpenStack Auth Operator_.
+Flavors can be easily listed with _List Flavors_ widget. This widget is not administrative, so it has not flavors-managing functions such as described in Sync Flavors section. Indeed, authentication is more simple, so it does not need _OpenStac Auth Operator_.
 
 ![List Flavors widget](images/list-flavors-widget.png)
