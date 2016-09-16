@@ -143,11 +143,19 @@ No authentication is required to make the requests, therefore this widget can be
 
 ## OpenStack Installed Versions
 
-This widget is named after the the backend FITOOLKIT functionality that reports the version of different OpenStack components across different FIWARE Lab nodes (a.k.a. regions). FITOOLKIT gathers such information from hosts in FIWARE Labs and makes it available on a Orion Context Broker instance, where this widget gets informed.
+This widget is named after the the backend FITOOLKIT functionality that reports the version of different OpenStack components across different FIWARE Lab nodes (a.k.a. regions).
 
 ![OS installed versions](images/installed-versions-widget.png)
 
 The widget sorts versions of any service for helping admins to identify lower or upper versions with respect to a given region, or to clearly identify some versions in case some patch wants to be distributed.
+
+No authentication is required to make the requests, therefore this widget can be part of a public dashboard, which might also be embedded elsewhere.
+
+## Generic Enablers Global Instances status
+
+This widget is based on FIHEALTH functionality that monitors and reports the status of different services on the hosts containing the globa instances of the Generic Enablers. The widget displays hosts in cards identified by the instance address, which contains the status of the different services monitored in a scale of values that include OK, CRITICAL, WARNING, and UNKNOWN. Values are displayed on colors acording to severity.
+
+![Global Instances widget](images/global-instances-widget.png)
 
 No authentication is required to make the requests, therefore this widget can be part of a public dashboard, which might also be embedded elsewhere.
 
