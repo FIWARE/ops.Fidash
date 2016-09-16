@@ -137,6 +137,20 @@ Specific values can also be read by leaving the cursos over a row for some secon
 
 ![Data usage tooltip](images/data-usage-tooltip.png)
 
+The widget works on it own and has no input or output endpoints. Tenand IDs have been partially hidden, so there is no possibility to list the VMs, even with admin roles.
+
+No authentication is required to make the requests, therefore this widget can be part of a public dashboard, which might also be embedded elsewhere.
+
+## OpenStack Installed Versions
+
+This widget is named after the the backend FITOOLKIT functionality that reports the version of different OpenStack components across different FIWARE Lab nodes (a.k.a. regions). FITOOLKIT gathers such information from hosts in FIWARE Labs and makes it available on a Orion Context Broker instance, where this widget gets informed.
+
+![OS installed versions](images/installed-versions-widget.png)
+
+The widget sorts versions of any service for helping admins to identify lower or upper versions with respect to a given region, or to clearly identify some versions in case some patch wants to be distributed.
+
+No authentication is required to make the requests, therefore this widget can be part of a public dashboard, which might also be embedded elsewhere.
+
 ## Flavor Sync
 
 Glance Sync functionality is composed of two widgets:
