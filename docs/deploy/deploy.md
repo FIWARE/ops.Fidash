@@ -25,7 +25,8 @@ Different roles are used in Widgets and in backend services. These roles must be
 Some roles are general, such as `UptimeRequester` for calendar or `InfrastructureManager` for image synchronization. But the `InfrastructureOwner` is not to be granted to the user in the app, but to be granted to the user in an organization that matches the region name (adding the string " FIDASH"). This role is for accounts allowed to manage elements inside a region, though that users should also have OpenStack permissions, which is out of the scope of this guide.
 
 > Regions have been mapped as organizations in the IdM. For avoiding collisions, an organization with the name of every region ending in " FIDASH" has been created. Therefore organizations such as `Spain2 FIDASH` or `Crete FIDASH` do represent regions `Spain` or `Crete`. For setting roles inside organizations, several steps must be carried out:
-> 1. create the region if not yet done
+
+> > 1. create the region if not yet done
 > 2. authorize the region to assign roles on the application. This is done by assigning the role `purchaser` to the region
 > 3. switching to the region profile. Next steps are done on the region provile
 > 4. add the user as member in the region
