@@ -6,51 +6,60 @@ The document describes the installation of the FIDASH component, the modificatio
 
 ## Installation of the environment
 
-FIDASH environment at the time of writing is executed inside public WireCloud instance in FIWARE Lab at [https://mashup.lab.fiware.org](https://mashup.lab.fiware.org).
+FIDASH is based on WireCloud. Version 0.9.2 is recommended in case provided style wants to be used as is. Public instance of WireCloud ([https://mashup.lab.fiware.org](https://mashup.lab.fiware.org)) might be used for testing some widgets, but roles are not defined, so not all functionality can be used.
 
-> In the future FIDASH will require a customized version of WireCloud. This document will be updated to describe the required steps to include the installation of such custom WireCloud instance together with the configurations and customizations required.
+### WireCloud installation
 
-> Since a public instance, and not a dedicated one, is being used at the time of writing, FIDASH currently requires the user to manually upload widgets to its own set of resources inside [https://mashup.lab.fiware.org](https://mashup.lab.fiware.org) following the instructions described below.
+A regular WireCloud instance is required. Please follow the instructions on the [WireCloud installation guide](https://github.com/Wirecloud/wirecloud/blob/develop/docs/installation_guide.md) or use a pre-created image.
 
-### Uploading widgets
+After the basic installation, integration with the IdM GE musth be done, as described in such guide. Besides, Apache2-based running is also recommended.
 
-Widgets must be packaged as zip-compressed files using `.wgt` extension to be uploaded in FIDASH, however their package can be downloaded from repositories or created from the source code. To upload widgets, go to the **My Resources** section inside [WireCloud public instance](https://mashup.lab.fiware.org), click on **Upload** button and then drag all the desired widgets.
+### Theme
+
+It is not mandatory to modify the theme. A customized version of the WireCloud FIWARE theme has been created with specific logos and branding, and can be used by copying the [https://github.com/fidash/fiware-fidash/tree/master/theme/fidashtheme](https://github.com/fidash/fiware-fidash/tree/master/theme/fidashtheme) folder on the WireCloud installation directory and modifying the `THEME_ACTIVE` directive on `settings.py` to `fidashtheme`.
+
+### Roles
+
+Different roles are used in Widgets and in backend services. These roles must be defined for certain users in the IdM application created for integrating the WireCloud instance with IdM.
+
+Some roles are general, such as `UptimeRequester` for calendar or `InfrastructureManager` for image synchronization. But the `InfrastructureOwner` is not to be granted to the user in the app, but to be granted to the user in an organization that matches the region name (adding the string " FIDASH"). This role is for accounts allowed to manage elements inside a region, though that users should also have OpenStack permissions, which is out of the scope of this guide.
+
+> Regions have been mapped as organizations in the IdM. For avoiding collisions, an organization with the name of every region ending in " FIDASH" has been created. Therefore organizations such as `Spain2 FIDASH` or `Crete FIDASH` do represent regions `Spain` or `Crete`. For setting roles inside organizations, several steps must be carried out:
+> 1. create the region if not yet done
+> 2. authorize the region to assign roles on the application. This is done by assigning the role `purchaser` to the region
+> 3. switching to the region profile. Next steps are done on the region provile
+> 4. add the user as member in the region
+> 5. enter to the members configuration
+> 6. authorize que user by granting him the desired role in the organization for the application. This is done only with the `InfrastructureOwner` role.
+
+### Make a superuser
+
+Superusers can be created easily with the command `python manage.py createsuperuser`. However, when having activated the widget `python-social-auth`, local user database is no longer used. Therefore, the required steps are:
+
+1. login the platform with the IdM user to be made SuperUser. Please take note of the username assigned to that user, which is not his email. Username can be discovered on Wirecloud navigation bar (whose text is "username / workspace name"), or in the URL path, just after the IP address or domain-name, and before the dashboard name.
+2. Open a python shell with the command `python manage.py shell` on the WireCloud installation directory and write the following lines replacing `USERNAME` with the real username:
+
+        from django.contrib.auth.models import User
+        user = User.objects.get(username='USERNAME')
+        user.is_superuser = True
+        user.is_staff = True
+        user.save()
+
+### Uploading widgets to the new instance
+
+Each of the developed widgets, and the only one operator, is developed on a specific project inside [fidash]([https://mashup.lab.fiware.org](https://mashup.lab.fiware.org)) organization in GitHub.
+
+Widgets are configured using grunt, which is used for setting up the environment, testing, packaging and, optionally, uploading them to the instance. The default grunt action will package them, so leaving the `.wgt` file on the `dist` folder. More detailed instructions can be found on the [developer guide](../developer/developer_guide.md), and indivitual compilation instructions are described in the `README.md` file of each widget.
+
+#### Uploading widgets automatically
+
+The grunt `wirecloud` action will upload the widget and will set it as public to every user in the WireCloud instance. This action will require the URL of the instance and user credentials for carrying out such actions.
+
+#### Uploading widgets manually
+
+To upload widgets, go to the **My Resources** section, click on **Upload** button and then drag all the desired widgets.
+
+To make a widget public, open the Django Admin Console (it must be done through a superadmin user), click on `Catalogue Resources`, enter the desired resource and set on the tick on "Available to all users".
 
 ![Access to My Resources](images/my-resources.png) ![upload button](images/upload.png)
 
-Widgets can now be found on the **My Resources** section, where user can see the details such as their version and delete or manage existing widgets. However, widgets are not yet instantiated in any dashboard or mashup.
-
-Please note the _back_ button (left arrow at the left of the name of dashboard or WireCloud tool such as _My Resources_) on the _My Resources_ page or other inside FIDASH for going back. It is required getting back using it instead of using browser functionality for previous page.
-
-![back button](images/back-button.png)
-
-> At the time of writing widgets are available as `.wgt` files in the [developers repository manager](https://repo.conwet.fi.upm.es/artifactory/webapp/#/artifacts/browse/tree/General/widget-release), under the `widget-release` folder. According to FIWARE developer guidelines, binaries and source code are being migrated to GitHub and will be available under the [FIDASH organization at GitHub](https://github.com/fidash).
-
-## Permissions
-
-Since FIDASH is composed by widgets with multi-region capabilities, you should have access to all the region you need to monitor or to manage; in addition a special access is requires to access SLAManager API.
-
-### Obtaining multi-region access
-
-There are different types of FIWARE accounts:
-
-* Basic: This is the default account that is created, though it does not have access to the cloud unless promoted to trial
-* Trial: Basic account with access to Cloud. It expires in 14 days. Currently, at FIWARE events, special instructions
-* Community: expires every 9 months. It is needed in order to have a multi-region access. It can be requested with an [account upgrade](http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE_Lab:_Upgrade_to_Community_Account) specifying all the regions you need to access with FIDASH.
-
-### Obtaining SLAManager access
-
-You need to send an e-mail to the [administrator](<sergio.garciavillalonga@atos.net>) of the SLAManager with these informations:
-
-* username (e.g. _myuser_)
-* e-mail (e.g. _e-mail@example.com_)
-* ProjectID: it can be found looking at the HTTP requests done by the system; it should be something like 00000000000000000000000000001234 or 000000000000000000000000_username_
-
-### Obtaining monitoring access
-
-Accessing monitoring through XI-FI API requires:
-
-* **Consumer Key**: is the ID of the application to enable
-* **Consumer Secret**: a secret token.
-
-These can be created using the [portal](https://account.lab.fiware.org) or asking to the administrator. This [test script](https://github.com/SmartInfrastructures/xifi-script/blob/master/testAPI.js) can be used to check if they have been enabled.
