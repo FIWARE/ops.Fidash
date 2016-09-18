@@ -161,23 +161,6 @@ This widget is based on FIHEALTH functionality that monitors and reports the sta
 
 No authentication is required to make the requests, therefore this widget can be part of a public dashboard, which might also be embedded elsewhere.
 
-## Flavor Sync
-
-Glance Sync functionality is composed of two widgets:
-
-* **Compare Flavors**: It lists reference flavors on the left, and flavors of the current region on the right. The current region is chosen among the ones that the user is _infrastructure owner_. User can select one flavor on each column, and according to that selection, the widget allows the user to:
-	* copy ![copy](images/copy.png) (left-column selected to current region)
-	* replace ![replace](images/replace.png) (right-column selected with left-column selected)
-	* delete ![delete](images/delete.png) (right-column selected)
-
-	Besides, widget eases the task of comparing by hiding ![hide/show equals](images/hide-show equals.png) the flavors that are compatible on the left and on the right. And the selections can be cleared ![clear](images/clear.png).
-	
-	![compare flavors](images/compare flavors.png)
-
-* **Show flavor differences**: with the widgets selected on **compare flavors** widget, this one shows their details highlighting the differences.
- 
-    ![show flavor differences](images/show flavor differences.png)
-
 ## Monitoring
 
 Real time monitoring is performed at different levels: **regions**, **hosts** and **virtual machines**. FIDASH monitoring has dedicated widgets for such levels, all of them with high customization possibilities. In all 3 widgets, regions can be filtered, and user can choose which measures to display, so the same widget can be instantiated many times, each of them devoted to a specific task: every measure of every region; every measure of a given region; one specific measure in every regions; or any intermediate point between them.
@@ -228,6 +211,33 @@ The aforementioned widgets can be instantiaded as many times as desired, resized
 **Monitoring data on a certain region**
 
 ![Monitoring data on a certain region](images/monitoring-one-region.png)
+
+## Image Synchronization
+
+Image Synchronization is based on the FITOOLKIT GlanceSync tool, which performs, with administrative OpenStack roles over the destination region, a copy of the reference images that are held on Spain2 node. It does list widgets on reference region (Spain2) at the left pane, and widgets on the destination region at the right, and allows to shrink the lists by hiding the images that are present at both, for comparison purposes. This is done with the "Hide equals" button.
+
+![Glance Sync](images/widget-glancesync.png)
+
+This widget does require OpenStack administrative permissions on the destination region, and Glance component on such rewion will not allow to perform any change without that permissions. Besides, front-end does also checks that the user has been granted the `InfrastructureOwner` role on any region. Indeed, the right pane header does only display the regions where the user has that role, and clicking on the Region name, all of them are displayes. Users without that role cannot use this widget.
+
+![Glance Sync regions](images/widget-glancesync-regions.png)
+
+## Flavor Synchronization
+
+Flavor Synchronization functionality is composed of two widgets:
+
+* **Compare Flavors**: It lists reference flavors on the left, and flavors of the current region on the right. The current region is chosen among the ones that the user is _infrastructure owner_. User can select one flavor on each column, and according to that selection, the widget allows the user to:
+	* copy ![copy](images/copy.png) (left-column selected to current region)
+	* replace ![replace](images/replace.png) (right-column selected with left-column selected)
+	* delete ![delete](images/delete.png) (right-column selected)
+
+	Besides, widget eases the task of comparing by hiding ![hide/show equals](images/hide-show equals.png) the flavors that are compatible on the left and on the right. And the selections can be cleared ![clear](images/clear.png).
+
+	![compare flavors](images/compare flavors.png)
+
+* **Show flavor differences**: with the widgets selected on **compare flavors** widget, this one shows their details highlighting the differences.
+
+    ![show flavor differences](images/show flavor differences.png)
 
 ## Maintenance calendar
 
