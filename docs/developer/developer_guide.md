@@ -81,6 +81,92 @@ where `prefName` is the name of the preference as defined in the config.xml file
 
 For further information about **wiring** and **preferences** please look at [widget API](http://conwet.fi.upm.es/wirecloud/widgetapi).
 
+## Authentication
+
+### IdM authentication
+
+The WireCloud instance in which FIDASH is based is in charge of authenticating the user with username and password. But instead of managing credentials on its own, it does redirect to the IdM, which returns a valid IdM token if authentication is successful.
+
+Such token is never exposed to widgets (and therefore to the JavaScript in client's browser), but managed by WireCloud, including the renewal when lease time expires.
+
+The mechanism of making HTTP requests using that token is therefore making use of the integrated proxy, which does also serve for avoiding cross-site HTTP requests limitations. Such proxy is flexible and does allow different types of injection in HTTP requests: custom HTTP header, body, or URL parameter. The way of controlling so is using two headers while making the request to the proxy. HTTP request through proxy are done calling `MashupPlatform.http.makeRequest(url, requestOps)`, where requestOps is a structure indicating error and success handlers, as well as IdM header requests. Indeed, invoking `MashupPlatform.context.get('fiware_token_available')` allows the programmer to know whether there is a valid IdM token available (the widget might be used by an anonymous user, who would not have such token).
+
+This is an example of the usage when accessing most FIWARE services:
+
+```javascript
+var requestOps = {
+    method: method,
+    requestHeaders: {
+        "X-FI-WARE-OAuth-Token": "true",
+        "X-FI-WARE-OAuth-Header-Name": "X-Auth-Token"
+    },
+    onSuccess: function(response) {
+        var data = JSON.parse(response.responseText);
+        //...
+    },
+    onFailure: function(response) {
+        //...
+    }
+};
+
+if (MashupPlatform.context.get('fiware_token_available')) {
+    MashupPlatform.http.makeRequest(url, requestOps);
+} else {
+    callback("No fiware token available");
+}
+```
+
+### OpenStack authentication
+
+OpenStack authentication in FIWARE is somehow tricky. Requesting an OpenStack token using IdM token is not valid, since Project ID might not be the correct one that reflects user's roles in the FIWARE Cloud. For doing so some other steps are required. They are shown here as curl requests for simplicity:
+
+1. Test if token is valid and request for permissions
+
+       curl -v https://account.lab.fiware.org/user/?access_token=<IdM token>
+
+2. Request OpenStak usage token without Project ID through IdM token.
+
+       curl -v 'http://cloud.lab.fiware.org:4730/v3/auth/tokens' -H 'Content-Type: application/json' -H 'Accept: application/json'  --data-binary '{"auth":{"identity":{"methods":["oauth2"],"oauth2":{"access_token_id":"<IdM token>"}}}}'
+
+    It does return `OpenStack token 1` in `X-Subject-Token`
+
+3. Request role assignments using that obtained `OpenStack token 1` and the user ID (obtained in WireCloud using `MashupPlatform.context.get('username')`:
+
+       curl -v  -H "X-Auth-Token: <OpenStack-token-1>" 'http://cloud.lab.fiware.org:4730/v3/role_assignments?user.id=<user ID>'
+
+    That request does return several Project IDs
+
+4. With each project ID returned, description is to be requested:
+
+       curl -vH 'X-Auth-Token: 71b5481c2c924dfd80b74537ddb9e157'  'http://cloud.lab.fiware.org:4730/v3/projects/<project ID>' 
+
+    Such call does return something like the following:
+
+    ```json
+    {
+      "project": {
+        "is_cloud_project": true,
+        "description": "This organization is intended to be used in the cloud environment. As long as you are a trial or community user this organization will be authorized as purchaser in the Cloud Application.",
+        "links": {
+          "self": "http:\/\/cloud.lab.fiware.org:4730\/v3\/projects\/00000000000000000000000000000159"
+        },
+        "enabled": true,
+        "id": "00000000000000000000000000000159",
+        "domain_id": "default",
+        "name": "miguel-jimenez cloud"
+      }
+    }
+    ````
+
+    Please note the `is_cloud_project` property. Whenever it is `true`, that project ID is valid in FIWARE Cloud. In this example, `00000000000000000000000000000159` is the valid project ID.
+
+5. Whenever a FIWARE cloud project ID is obtained, a new OpenStack token is to be obtained. In this case, `scope` property does indicate we want a token associated with such project ID::
+
+       curl -v 'http://cloud.lab.fiware.org:4730/v3/auth/tokens' -H 'Content-Type: application/json' -H 'Accept: application/json'  --data-binary '{"auth":{"identity":{"methods":["oauth2"],"oauth2":{"access_token_id":"<IdM token>"}},"scope":{"project":{"id":"<project ID>"}}}}' 
+
+    OpenStack valid token is obtained inside `X-Subject-Token`
+
+Reader can find a fully usable example as library in [[https://github.com/fidash/operator-auth/blob/master/src/lib/js/OStackAuth.js)](https://github.com/fidash/operator-auth/blob/master/src/lib/js/OStackAuth.js)
 
 ## JStack
 
