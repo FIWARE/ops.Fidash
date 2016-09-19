@@ -18,6 +18,10 @@ After the basic installation, integration with the IdM GE musth be done, as desc
 
 It is not mandatory to modify the theme. A customized version of the WireCloud FIWARE theme has been created with specific logos and branding, and can be used by copying the [https://github.com/fidash/fiware-fidash/tree/master/theme/fidashtheme](https://github.com/fidash/fiware-fidash/tree/master/theme/fidashtheme) folder on the WireCloud installation directory and modifying the `THEME_ACTIVE` directive on `settings.py` to `fidashtheme`.
 
+After installing and setting the theme, static content should be recreated. This is done using the following command inside the installation directory:
+
+    python manage.py collectstatic
+
 ### Roles
 
 Different roles are used in Widgets and in backend services. These roles must be defined for certain users in the IdM application created for integrating the WireCloud instance with IdM.
