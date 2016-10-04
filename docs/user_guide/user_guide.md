@@ -278,20 +278,6 @@ FITOOLKIT did create the back-end, and a public ICS calendar is exported with th
 
     > Google Calendar does refresh external ICSs on an un-specified frequency that seems to be around 24 hours.
 
-
-## Monitoring
-
-### Monitoring regions
-
-General data about different regions is shown in **Monitoring Regions** widget. It shows virtual CPUs, RAM, disk space and public IPs in a percentage ratio of total/used and a circular graph. It does also indicate real values on tooltip when mouse is over a graph. For CPU and RAM usage, virtual values (applied the over-commit ratio) are shown.
-
-Widget is flexible in two ways:
-
-* it allows choosing one or many regions, via its region selector or receiving them by wiring from the **region selector widget**. Each region is shown in a specific card, and those cards are arranged in columns automatically according to the vertical and horizontal space of widget vs cards.
-* it allows user to focus on the desired measures (vCPU, RAM, disk and IP addresses). It works together with the selection of regions, and allows for a flexible creation of specific purpose views.
-
-It's worth saying that the widget, as all of them, can be instantiated multiple times, focusing a given instance on a specific purpose, such as global status of computing or free IP addresses, or monitoring of the set of regions of interest (e.g. the ones hat are hosting one application).
-
 ## OpenStack management widgets
 
 The set of OpenStack-based widgets allow for a basic management of personal elements on FIWARE Lab. It does not intend to replace FIWARE Cloud interface, but to serve a subset of its functionality inside FIDASH, so as users can create dashboards adding information about her own resources. As a differentiation, OpenStack-based widgets are by default _multi-region_, so images, instances, volumes and flavors can be browsed of one, all or several regions at once.
